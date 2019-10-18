@@ -1,0 +1,33 @@
+Conrad Tempel
+Lab 6
+
+
+Question 4
+CREATE TABLE uni_table(
+     University_Name VARCHAR(1000) PRIMARY KEY,
+     Date_Established INT,
+     Address VARCHAR(1000),
+     Student_Pop INT,
+     Acceptance_Rate REAL,
+  );
+INSERT INTO uni_table (University_Name, Date_Established, Address, Student_Pop, Acceptance_Rate)
+  VALUES ('CU Boulder', 1876, '1100 28th St, Boulder, CO 80303', 35,000, .8);
+
+Question 5
+1.SELECT name, major FROM football_db ORDER BY major;
+2.SELECT name, rushing_yards FROM football_db WHERE rushing_yards > 70;
+3.SELECT vistor_name, home_score, visitor_score, game_date, players FROM football_db WHERE vistor_name = 'Nebraska';
+4.SELECT vistor_name, home_score, visitor_score, game_date, players FROM football_db WHERE home_score > visitor_score;
+5.SELECT visitor_name, game_date FROM football_db;
+6.SELECT (SUM(home_score) / COUNT(game_date) as float) as "avg_points" FROM football_db;
+7.SELECT major, COUNT(major) FROM football_db as number_of_players
+8.SELECT major, COUNT(distinct major) FROM football_db as number_of_players WHERE major = 'CSCI';
+
+Question 6
+1.CREATE VIEW winning_games as SELECT COUNT(game_date) FROM football_db WHERE home_score > visitor_score;
+2.CREATE VIEW games_played as SELECT COUNT(game_date) FROM football_db;
+3.CREATE VIEW win_percent as SELECT [(SELECT COUNT(game_date) FROM football_db WHERE home_score > visitor_score)/ COUNT(game_date) as "win_percent" FROM football_db
+
+Question 7
+1. SELECT COUNT* FROM football_games G, football_players P WHERE P.id = ANY(G.players) AND P.name = 'Cedric Vega';
+2. SELECT AVG(rushing_yards) FROM football_games G, football_players P WHERE P.id = ANY(G.players) AND P.name = 'Cedric Vega';
